@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "loginField": "hyorax@gmail.com",
+      "nameSurname": "sametpalitci",
+      "userName":"samet",
+      "password": 123123
+    }
+  ]
+}

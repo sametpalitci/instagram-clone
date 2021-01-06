@@ -1,6 +1,26 @@
 import "../stylesheets/pages.css";
+import { useState } from 'react';
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { registerControl } from '../controller/mainController';
+import emptyAreaCheck from '../utils/emptyAreaCheck';
+
 const RegisterPage = (props) => {
+
+    const [emailOrPhone, setEmailOrPhone] = useState("");
+    const [nameSurname, setNameSurname] = useState("");
+    const [userName, setUserName] = useState("");
+    const [userPassword, setUserPassword] = useState("");
+    const [errors, setErrors] = useState("");
+    const registerButton = async (e) => {
+        const checkValid = emptyAreaCheck(emailOrPhone, nameSurname, userName, userPassword);
+        if (checkValid) {
+            return props.onRegisterControl(emailOrPhone, nameSurname, userName, userPassword);
+        }
+        setErrors("Alanlar Boş bırakılamaz.");
+        e.preventDefault();
+    }
+    console.log(props)
     return (
         <div className="container">
             <div className="row mt-5">
@@ -16,38 +36,53 @@ const RegisterPage = (props) => {
                                 />
                             </div>
                             <p className="text-center px-5">Arkadaşlarının fotoğraf ve videolarını görmek için kaydol.</p>
-                            <form>
-                                <div class="form-row">
-                                    <div class="col-12 mt-2">
+                            {errors.length > 0 ?
+                                <div className="alert alert-primary" role="alert">
+                                   {errors}
+                                </div>
+                                : null
+
+                            }
+                            <form onSubmit={registerButton}>
+                                <div className="form-row">
+                                    <div className="col-12 mt-2">
                                         <input
                                             type="text"
-                                            class="form-control"
-                                            placeholder="Telefon numarası, kullanıcı adı veya e-posta"
+                                            value={emailOrPhone}
+                                            onChange={(text) => setEmailOrPhone(text.target.value)}
+                                            className="form-control"
+                                            placeholder="Telefon numarası veya e-posta"
                                         />
                                     </div>
-                                    <div class="col-12 mt-2">
+                                    <div className="col-12 mt-2">
                                         <input
                                             type="text"
-                                            class="form-control"
+                                            value={nameSurname}
+                                            onChange={(text) => setNameSurname(text.target.value)}
+                                            className="form-control"
                                             placeholder="Adı Soyadı"
                                         />
                                     </div>
-                                    <div class="col-12 mt-2">
+                                    <div className="col-12 mt-2">
                                         <input
                                             type="text"
-                                            class="form-control"
+                                            value={userName}
+                                            onChange={(text) => setUserName(text.target.value)}
+                                            className="form-control"
                                             placeholder="Kullanıcı adı"
                                         />
                                     </div>
-                                    <div class="col-12 mt-2">
+                                    <div className="col-12 mt-2">
                                         <input
                                             type="password"
-                                            class="form-control"
+                                            value={userPassword}
+                                            onChange={(text) => setUserPassword(text.target.value)}
+                                            className="form-control"
                                             placeholder="Şifre"
                                         />
                                     </div>
-                                    <div class="col-12 mt-2">
-                                        <button class="form-control btn btn-primary">Kaydol</button>
+                                    <div className="col-12 mt-2">
+                                        <button className="form-control btn btn-primary" onClick={registerButton}>Kaydol</button>
                                     </div>
                                 </div>
                             </form>
@@ -67,4 +102,9 @@ const RegisterPage = (props) => {
     );
 };
 
-export default RegisterPage;
+const mapStateToProps = state => state;
+const mapDispatchToProps = {
+    onRegisterControl: registerControl
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);

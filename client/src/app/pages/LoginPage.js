@@ -16,23 +16,23 @@ const LoginPage = (props) => {
                 />
               </div>
               <form>
-                <div class="form-row">
-                  <div class="col-12 mt-2">
+                <div className="form-row">
+                  <div className="col-12 mt-2">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       placeholder="Telefon numarası, kullanıcı adı veya e-posta"
                     />
                   </div>
-                  <div class="col-12 mt-2">
+                  <div className="col-12 mt-2">
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       placeholder="Şifre"
                     />
                   </div>
-                  <div class="col-12 mt-2">
-                    <button class="form-control btn btn-primary">
+                  <div className="col-12 mt-2">
+                    <button className="form-control btn btn-primary">
                       Giriş Yap
                     </button>
                   </div>

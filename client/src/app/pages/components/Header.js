@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <div className="container-full card ">
@@ -21,7 +23,14 @@ const Header = () => {
                   />
                 </form>
               </div>
-              <div className="d-flex align-items-center justify-content-start flex-column"></div>
+              <div className="headerLogo d-flex align-items-center justify-content-between flex-row">
+                <Link to="/" className="text-dark">
+                  <ion-icon name="home" size="large"></ion-icon>
+                </Link>
+                <Link to="/user" className="text-dark" >
+                  <ion-icon  name="person" size="large"></ion-icon>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

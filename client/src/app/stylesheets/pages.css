@@ -7,3 +7,7 @@ body{
 .headerLogo {
     width: 200px;
 }
+
+.userImage img{
+    width:50px !important;
+}
