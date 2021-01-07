@@ -1,6 +1,17 @@
 import "../stylesheets/pages.css";
+import { useState } from 'react';
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { loginControl } from '../controller/mainController';
 const LoginPage = (props) => {
+  console.log(props)
+  const [userField, setUserField] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+
+  const loginToMain = (e)=>{
+    e.preventDefault();
+    props.onLoginControl(userField,userPassword);
+  }
   return (
     <div className="container">
       <div className="row mt-5">
@@ -15,11 +26,20 @@ const LoginPage = (props) => {
                   alt=""
                 />
               </div>
-              <form>
+              {props.err.length > 0 ?
+                                <div className="alert alert-primary" role="alert">
+                                   {props.err}
+                                </div>
+                                : null
+
+                            }
+              <form onSubmit={loginToMain}>
                 <div className="form-row">
                   <div className="col-12 mt-2">
                     <input
                       type="text"
+                      value={userField}
+                      onChange={(text)=>setUserField(text.target.value)}
                       className="form-control"
                       placeholder="Telefon numarası, kullanıcı adı veya e-posta"
                     />
@@ -27,12 +47,14 @@ const LoginPage = (props) => {
                   <div className="col-12 mt-2">
                     <input
                       type="password"
+                      value={userPassword}
+                      onChange={(text)=>setUserPassword(text.target.value)}
                       className="form-control"
                       placeholder="Şifre"
                     />
                   </div>
                   <div className="col-12 mt-2">
-                    <button className="form-control btn btn-primary">
+                    <button onClick={loginToMain} className="form-control btn btn-primary">
                       Giriş Yap
                     </button>
                   </div>
@@ -59,4 +81,10 @@ const LoginPage = (props) => {
   );
 };
 
-export default LoginPage;
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = {
+  onLoginControl:loginControl
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(LoginPage);

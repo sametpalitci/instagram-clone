@@ -3,24 +3,17 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { registerControl } from '../controller/mainController';
-import emptyAreaCheck from '../utils/emptyAreaCheck';
-
 const RegisterPage = (props) => {
 
     const [emailOrPhone, setEmailOrPhone] = useState("");
     const [nameSurname, setNameSurname] = useState("");
     const [userName, setUserName] = useState("");
     const [userPassword, setUserPassword] = useState("");
-    const [errors, setErrors] = useState("");
-    const registerButton = async (e) => {
-        const checkValid = emptyAreaCheck(emailOrPhone, nameSurname, userName, userPassword);
-        if (checkValid) {
-            return props.onRegisterControl(emailOrPhone, nameSurname, userName, userPassword);
-        }
-        setErrors("Alanlar Boş bırakılamaz.");
+    
+    const registerButton = (e) => {
         e.preventDefault();
+        props.onRegisterControl(emailOrPhone, nameSurname, userName, userPassword);
     }
-    console.log(props)
     return (
         <div className="container">
             <div className="row mt-5">
@@ -36,9 +29,9 @@ const RegisterPage = (props) => {
                                 />
                             </div>
                             <p className="text-center px-5">Arkadaşlarının fotoğraf ve videolarını görmek için kaydol.</p>
-                            {errors.length > 0 ?
+                            {props.err.length > 0 ?
                                 <div className="alert alert-primary" role="alert">
-                                   {errors}
+                                   {props.err}
                                 </div>
                                 : null
 

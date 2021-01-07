@@ -1,11 +1,70 @@
 {
-  "users": [
-    {
-      "id": 0,
-      "loginField": "hyorax@gmail.com",
-      "nameSurname": "sametpalitci",
-      "userName":"samet",
-      "password": 123123
-    }
-  ]
+    "users": [{
+            "id": 0,
+            "loginField": "hyorax@gmail.com",
+            "nameSurname": "sametpalitci",
+            "userName": "samet",
+            "password": 123123
+        },
+        {
+            "loginField": "tes",
+            "nameSurname": "tes",
+            "userName": "tes",
+            "password": "$2a$10$CzP7TSxvZjgFx8kR.lj49eetZuncsR6RVP4yJmBhGs5f620XcQYCG",
+            "id": 1
+        },
+        {
+            "loginField": "te",
+            "nameSurname": "te",
+            "userName": "te",
+            "password": "$2a$10$2ERHjicqB8jfv/wvY3FWIOwPhWeZjotapO16deKE9Z.vbtoVywWXu",
+            "id": 2
+        },
+        {
+            "loginField": "hyorax1@gmail.com",
+            "nameSurname": "123",
+            "userName": "123",
+            "password": "$2a$10$yqU/8tyLUYXezuZReBA7eutDdvY8gPHNRk75bpFvUu5CbT1GBzeUK",
+            "id": 3
+        },
+        {
+            "loginField": "hyorax2@gmail.com",
+            "nameSurname": "123",
+            "userName": "123",
+            "password": "$2a$10$92UcJ09I/GlzpUC09ZdjYOVRyWmDs8TF4YZ1R75Rb3K6xlFqAY0Yi",
+            "id": 4
+        },
+        {
+            "loginField": "hyorax3@gmail.com",
+            "nameSurname": "123",
+            "userName": "123",
+            "password": "$2a$10$C8CGls9GwozjeYz0DkRPLOjTdRrYY3l8CgRVok3OnZ/H66HjpgKoa",
+            "id": 5
+        },
+        {
+            "loginField": "test",
+            "nameSurname": "test",
+            "userName": "test",
+            "password": "$2a$10$Cuv1Iza5jkoCAo8MCxknDea7EacLAU704Rn3bXsAF8JSvhEDzh7s2",
+            "id": 6
+        },
+        {
+            "loginField": "1",
+            "nameSurname": "1",
+            "userName": "1",
+            "password": "$2a$10$TgkoySYWKTZCSQXFXLjHSOpBIsOccSQ/W8ypLb2i.B2NeheuwJjUe",
+            "id": 7
+        }
+    ],
+    "photos": [{
+            "id": 0,
+            "user_id": 7,
+            "image_url": "https://g.hizliresim.com/beyaz-lamborghini"
+        },
+        {
+            "id": 2,
+            "user_id": 5,
+            "image_url": "https://g.hizliresim.com/beyaz-lamborghini"
+        }
+    ]
 }

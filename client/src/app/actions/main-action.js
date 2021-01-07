@@ -1,12 +1,28 @@
 const ADD_USER = "ADD_USER";
+const LOGIN_USER = "LOGIN_USER";
+const GET_DATA = "GET_DATA";
 
 const addUser = (getData) => {
     return {
-        type:ADD_USER,
-        payload:{
-            data:getData
+        type: ADD_USER,
+        payload: {
+            data: getData
         }
     }
 }
+const loginUser = (getData) => {
+    return {
+        type: ADD_USER,
+        payload: {
+            data: getData
+        }
+    }
+}
+const getData = (getData) => {
+    return {
+        type: GET_DATA,
+        payload: getData
+    }
+}
 
-export {addUser, ADD_USER}
+export { addUser, ADD_USER, loginUser, LOGIN_USER, getData, GET_DATA }

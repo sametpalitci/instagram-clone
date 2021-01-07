@@ -1,4 +1,5 @@
 const Card = (props) => {
+  console.log(props)
   return (
     <div className="card mt-2">
       <div className="card-header">

@@ -11,11 +11,20 @@ const Router = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={MainPage} />
-                <Route exact path="/user" component={UserPage} />
-                <Route exact path="/login" component={LoginPage} />
-                <Route exact path="/register" component={RegisterPage} />
-                <Route exact path="/forgot" component={ForgotPage} />
+                {localStorage.getItem("token") ? 
+                <>
+                    <Route exact path="/" component={MainPage} />
+                    <Route exact path="/user" component={UserPage} />
+                    <Route exact render={()=><h1>Giriş Yapmışsın.</h1>} />
+                </>:
+                <>
+                    <Route exact path="/login" component={LoginPage} />
+                    <Route exact path="/register" component={RegisterPage} />
+                    <Route exact path="/forgot" component={ForgotPage} />   
+                    <Route exact render={()=><h1>Giriş Yapmamışsın.</h1>} />
+                </>
+                }
+                
             </Switch>
         </BrowserRouter>
     );
