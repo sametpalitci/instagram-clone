@@ -14,21 +14,15 @@ const Header = () => {
                   alt=""
                 />
               </div>
-              <div className="d-flex align-items-center justify-content-start">
-                <form>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="ara"
-                  />
-                </form>
-              </div>
               <div className="headerLogo d-flex align-items-center justify-content-between flex-row">
                 <Link to="/" className="text-dark">
-                  <ion-icon name="home" size="large"></ion-icon>
+                  <ion-icon name="home-outline" color="#333" size="large"></ion-icon>
                 </Link>
                 <Link to="/user" className="text-dark" >
-                  <ion-icon  name="person" size="large"></ion-icon>
+                  <ion-icon  name="person-outline" color="#333" size="large"></ion-icon>
+                </Link>
+                <Link to="/logout" className="text-dark" >
+                  <ion-icon  name="log-out-outline" color="#333" size="large"></ion-icon>
                 </Link>
               </div>
             </div>

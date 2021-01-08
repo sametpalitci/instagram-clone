@@ -1,4 +1,4 @@
-import { addUser, getData } from "../actions/main-action";
+import { addUser, getData, getUserData } from "../actions/main-action";
 import { errorAction } from "../actions/error-action";
 import bcrypt from "bcryptjs";
 import emptyAreaCheck from "../utils/emptyAreaCheck";
@@ -105,22 +105,21 @@ const mainPageContext = () => {
                 Accept: "application/json",
                 "Content-Type": "application/json",
             }
-        }).then(res => res.json()).then((res) => dispatch(getData(res)))
+        }).then(res => res.json()).then((res) => dispatch(getData(res)));
     }
 };
 
-const userNameFinder = (id) => {
+const userNameContext = (id) => {
     return dispatch => {
-        fetch(`http://localhost:8080/users/${id}`, {
-                method: "GET",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                }
-            })
-            .then((res) => res.json())
-            .then((res) => { return (res.userName) })
-            .catch((err) => console.log(err))
-    };
-}
-export { registerControl, loginControl, mainPageContext, userNameFinder };
+        fetch(`http://localhost:8080/photos?user_id=${id}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            }
+        }).then(res => res.json()).then((res) => dispatch(getUserData(res)));
+    }
+};
+
+
+export { registerControl, loginControl, mainPageContext, userNameContext };

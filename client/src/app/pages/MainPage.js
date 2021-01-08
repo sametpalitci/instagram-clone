@@ -7,35 +7,22 @@ import Footer from "./components/Footer";
 import Card from "./components/Card";
 import { mainPageContext } from '../controller/mainController';
 const MainPage =  (props) => {
-const [User, setUser] = useState("")
   useEffect(()=>{
 	props.onMainPageContext();
   },[]);
-  const userNameFinder = (id) => {
-	fetch(`http://localhost:8080/users/${id}`, {
-		method: "GET",
-		headers: {
-			Accept: "application/json",
-			"Content-Type": "application/json",
-		}
-	})
-	.then(res => res.json())
-	.then(res => res.userName)
-	.then(res=> res);
-  }
+ 
   return (
     <>
       <Header />
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            {props.main.map((n,key)=>{
-				console.log(n)
+            {props.main.map( (n,key)=>{
               return(
             	<Card
-					key={key}
-					userName={userNameFinder(n.user_id)}
-					photo={n.image_url}
+                key={key}
+                userName={n.user_id}
+                photo={n.image_url}
                 />
               );
             })}

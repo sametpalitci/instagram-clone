@@ -1,5 +1,22 @@
+import { useEffect, useState } from "react";
+
 const Card = (props) => {
-  console.log(props)
+  const [getUsername, setUserName] = useState("")
+  useEffect(()=>{
+    userNameFinder(props.userName)
+  },[]);
+  const userNameFinder = (id) => {
+    fetch(`http://localhost:8080/users/${id}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      }
+    })
+    .then(res => res.json())
+    .then(res => res.userName)
+    .then(res=> {setUserName(res)});
+    };
   return (
     <div className="card mt-2">
       <div className="card-header">
@@ -10,7 +27,7 @@ const Card = (props) => {
             src={props.userAvatar}
             alt=""
             />
-            <p className="my-0 mx-2 p-0">{props.userName}</p>
+            <p className="my-0 mx-2 p-0">{getUsername}</p>
           </div>
         </div>
       </div>
